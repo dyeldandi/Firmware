@@ -737,7 +737,6 @@ int position_estimator_inav_thread_main(int argc, char *argv[])
 							x_est[1] = gps.vel_n_m_s;
 							y_est[0] = gps_proj[1];
 							y_est[1] = gps.vel_e_m_s;
-
 						}
 
 						/* calculate index of estimated values in buffer */
@@ -961,6 +960,7 @@ int position_estimator_inav_thread_main(int argc, char *argv[])
 
 		if (use_gps_z) {
 			epv = fminf(epv, gps.epv);
+
 			inertial_filter_correct(corr_gps[2][0], dt, z_est, 0, w_z_gps_p);
 			inertial_filter_correct(corr_gps[2][1], dt, z_est, 1, w_z_gps_v);
 		}
